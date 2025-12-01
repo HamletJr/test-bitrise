@@ -1,6 +1,6 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
-import 'package:jokes_come_true/screens/login.dart';
+import 'package:football_news/screens/login.dart';
 import 'package:pbp_django_auth/pbp_django_auth.dart';
 import 'package:provider/provider.dart';
 
@@ -21,21 +21,12 @@ class _RegisterPageState extends State<RegisterPage> {
     final request = context.watch<CookieRequest>();
     return Scaffold(
       appBar: AppBar(
-        title: const Text(
-          'Jokes Come True',
-          style: TextStyle(
-            color: Colors.white,
-            fontWeight: FontWeight.bold,
-          ),
-        ),
         leading: IconButton(
           icon: const Icon(Icons.arrow_back),
           onPressed: () {
             Navigator.pop(context);
           },
         ),
-        backgroundColor: Theme.of(context).colorScheme.primary,
-        iconTheme: const IconThemeData(color: Colors.white),
       ),
       body: Center(
         child: SingleChildScrollView(
@@ -123,12 +114,12 @@ class _RegisterPageState extends State<RegisterPage> {
                       String password1 = _passwordController.text;
                       String password2 = _confirmPasswordController.text;
 
-                      // Cek kredensial
-                      // TODO: Ganti URL dan jangan lupa tambahkan trailing slash (/) di akhir URL!
-                      // Untuk menyambungkan Android emulator dengan Django pada localhost,
-                      // gunakan URL http://10.0.2.2/
+                      // Check credentials
+                          // TODO: Change the URL and don't forget to add trailing slash (/) at the end of URL!
+                          // To connect Android emulator with Django on localhost, use URL http://10.0.2.2/
+                          // If you using chrome,  use URL http://localhost:8000
                       final response = await request.postJson(
-                          "http://127.0.0.1:8000/auth/register/",
+                          "http://localhost:8000/auth/register/",
                           jsonEncode({
                             "username": username,
                             "password1": password1,
@@ -157,7 +148,7 @@ class _RegisterPageState extends State<RegisterPage> {
                     },
                     style: ElevatedButton.styleFrom(
                       foregroundColor: Colors.white,
-                      minimumSize: const Size(double.infinity, 50),
+                      minimumSize: Size(double.infinity, 50),
                       backgroundColor: Theme.of(context).colorScheme.primary,
                       padding: const EdgeInsets.symmetric(vertical: 16.0),
                     ),

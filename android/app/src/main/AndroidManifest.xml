@@ -1,6 +1,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
     <application
-        android:label="jokes_come_true"
+        android:label="football_news"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity
@@ -31,7 +31,6 @@
             android:name="flutterEmbedding"
             android:value="2" />
     </application>
-    <!-- Required to fetch data from the Internet. -->
     <uses-permission android:name="android.permission.INTERNET" />
     <!-- Required to query activities that can process text, see:
          https://developer.android.com/training/package-visibility and

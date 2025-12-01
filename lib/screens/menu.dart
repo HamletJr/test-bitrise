@@ -1,28 +1,29 @@
 import 'package:flutter/material.dart';
-import 'package:jokes_come_true/widgets/product_card.dart';
-import 'package:jokes_come_true/widgets/left_drawer.dart';
+import 'package:football_news/widgets/left_drawer.dart';
+import 'package:football_news/widgets/news_card.dart';
 
 class MyHomePage extends StatelessWidget {
-  final String npm = '2306275746'; // NPM
-  final String name = 'Joshua Montolalu'; // Nama
-  final String className = 'PBP F'; // Kelas
-  final List<ItemHomepage> items = [
-    ItemHomepage("View products", Icons.view_list, Colors.lightBlue),
-    ItemHomepage("Add product", Icons.add, Colors.green),
-    ItemHomepage("Logout", Icons.logout, Colors.red),
-  ];
-  
-  MyHomePage({super.key});
+    MyHomePage({super.key});
 
-  @override
-  Widget build(BuildContext context) {
+    final String nama = "Muhammad Hafizh"; //nama
+    final String npm = "2406437451"; //npm
+    final String kelas = "D"; //kelas
+
+    final List<ItemHomepage> items = [
+    ItemHomepage("See Football News", Icons.newspaper),
+    ItemHomepage("Add News", Icons.add),
+    ItemHomepage("Logout", Icons.logout),
+    ];
+
+    @override
+    Widget build(BuildContext context) {
     // Scaffold menyediakan struktur dasar halaman dengan AppBar dan body.
     return Scaffold(
       // AppBar adalah bagian atas halaman yang menampilkan judul.
       appBar: AppBar(
-        // Judul aplikasi "Jokes Come True" dengan teks putih dan tebal.
+        // Judul aplikasi "Football News" dengan teks putih dan tebal.
         title: const Text(
-          'Jokes Come True',
+          'Football News',
           style: TextStyle(
             color: Colors.white,
             fontWeight: FontWeight.bold,
@@ -30,8 +31,8 @@ class MyHomePage extends StatelessWidget {
         ),
         // Warna latar belakang AppBar diambil dari skema warna tema aplikasi.
         backgroundColor: Theme.of(context).colorScheme.primary,
-        iconTheme: const IconThemeData(color: Colors.white),
       ),
+      drawer: LeftDrawer(),
       // Body halaman dengan padding di sekelilingnya.
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -44,8 +45,8 @@ class MyHomePage extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 InfoCard(title: 'NPM', content: npm),
-                InfoCard(title: 'Name', content: name),
-                InfoCard(title: 'Class', content: className),
+                InfoCard(title: 'Name', content: nama),
+                InfoCard(title: 'Class', content: kelas),
               ],
             ),
 
@@ -62,7 +63,7 @@ class MyHomePage extends StatelessWidget {
                   const Padding(
                     padding: EdgeInsets.only(top: 16.0),
                     child: Text(
-                      'Welcome to Jokes Come True',
+                      'Selamat datang di Football News',
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
                         fontSize: 18.0,
@@ -91,40 +92,46 @@ class MyHomePage extends StatelessWidget {
           ],
         ),
       ),
-      drawer: const LeftDrawer(),
     );
   }
 }
 
-  class InfoCard extends StatelessWidget {
-    // Kartu informasi yang menampilkan title dan content.
+class InfoCard extends StatelessWidget {
+  // Kartu informasi yang menampilkan title dan content.
 
-    final String title;  // Judul kartu.
-    final String content;  // Isi kartu.
+  final String title;  // Judul kartu.
+  final String content;  // Isi kartu.
 
-    const InfoCard({super.key, required this.title, required this.content});
+  const InfoCard({super.key, required this.title, required this.content});
 
-    @override
-    Widget build(BuildContext context) {
-      return Card(
-        // Membuat kotak kartu dengan bayangan dibawahnya.
-        elevation: 2.0,
-        child: Container(
-          // Mengatur ukuran dan jarak di dalam kartu.
-          width: MediaQuery.of(context).size.width / 3.5, // menyesuaikan dengan lebar device yang digunakan.
-          padding: const EdgeInsets.all(10.0),
-          // Menyusun title dan content secara vertikal.
-          child: Column(
-            children: [
-              Text(
-                title,
-                style: const TextStyle(fontWeight: FontWeight.bold),
-              ),
-              const SizedBox(height: 8.0),
-              Text(content),
-            ],
-          ),
+  @override
+  Widget build(BuildContext context) {
+    return Card(
+      // Membuat kotak kartu dengan bayangan dibawahnya.
+      elevation: 2.0,
+      child: Container(
+        // Mengatur ukuran dan jarak di dalam kartu.
+        width: MediaQuery.of(context).size.width / 3.5, // menyesuaikan dengan lebar device yang digunakan.
+        padding: const EdgeInsets.all(16.0),
+        // Menyusun title dan content secara vertikal.
+        child: Column(
+          children: [
+            Text(
+              title,
+              style: const TextStyle(fontWeight: FontWeight.bold),
+            ),
+            const SizedBox(height: 8.0),
+            Text(content),
+          ],
         ),
-      );
-    }
+      ),
+    );
+  }
+}
+
+class ItemHomepage {
+  final String name;
+  final IconData icon;
+
+  ItemHomepage(this.name, this.icon);
 }

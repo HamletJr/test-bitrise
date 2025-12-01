@@ -1,6 +1,6 @@
 {
-    "name": "jokes_come_true",
-    "short_name": "jokes_come_true",
+    "name": "football_news",
+    "short_name": "football_news",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",
